@@ -1,0 +1,87 @@
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^index.html$ index.php
+RewriteRule ^browse.html$ category.php
+RewriteRule ^browse-(.*)-videos.html$ category.php?cat=$1
+RewriteRule ^browse-(.*)-videos-([0-9]+)-(.*).html$ category.php?cat=$1&page=$2&sortby=$3
+RewriteRule ^videos.flv(.*)$ videos.php$1
+RewriteRule ^videos.mp4(.*)$ videos.php$1
+RewriteRule ^register.html$ register.php
+RewriteRule ^contact.html$ contact.php
+RewriteRule ^edit-profile.html$ edit-profile.php
+RewriteRule ^suggest.html$ suggest.php
+RewriteRule ^upload.html$ upload.php
+RewriteRule ^upload_avatar.html$ upload_avatar.php
+RewriteRule ^suggest.html$ suggest.php
+RewriteRule ^favorites.html(.*)$ favorites.php$1
+RewriteRule ^login.html(.*)$ login.php$1
+RewriteRule ^newvideos.html(.*)$ newvideos.php$1
+RewriteRule ^topvideos.html(.*)$ topvideos.php$1
+RewriteRule ^profile.html(.*)$ profile.php$1
+RewriteRule ^user/([^/]+)/?$ user.php?u=$1
+RewriteRule ^user/([^/]+)/(.*)/?$ user.php?u=$1&view=$2
+RewriteRule ^memberlist.html(.*)$ memberlist.php$1
+RewriteRule ^playlists.html(.*)$ playlists.php$1
+RewriteRule ^articles/index-([0-9]+).html$ article.php?page=$1
+RewriteRule ^articles/browse-(.*)-([0-9]+).html$ article.php?c=$1&page=$2
+RewriteRule ^articles/tag/([^/]+)/page-([0-9]+)(/)?$ article.php?tag=$1&page=$2
+RewriteRule ^articles/tag/([^/]+)(/)?$ article.php?tag=$1&page=1
+RewriteRule ^articles/popular-([0-9]+).html$ article.php?show=popular&page=$1
+RewriteRule ^articles/(.*)_([0-9]+).html$ article-read.php?a=$2
+RewriteRule ^articles(\/|.html)?$ article.php
+RewriteRule ^article(\/|.html)?$ article.php
+RewriteRule ^pages/(.*)\.html$ page.php?name=$1
+RewriteRule ^playlist/(.*)/([^/]+)(/)?$ watch.php?playlist=$1&vid=$2
+RewriteRule ^playlist/(.*)$ playlists.php?playlist=$1
+RewriteRule ^tags/([^/]+)/$ tag.php?t=$1&page=1
+RewriteRule ^tags/([^/]+)/page-([0-9]+)(/)?$ tag.php?t=$1&page=$2
+RewriteRule ^embed/([^/]+)$ embed.php?vid=$1
+RewriteRule ^([^/]*)_([a-zA-Z0-9]{9}).html$ watch.php?vid=$2
+RewriteRule ^uploads/thumbs/(.*)-social.(jpg|gif|png)$ social-thumb.php?vid=$1
+RewriteRule ^rss.xml$ rss.php
+RewriteRule ^series/(page-([0-9]+)/)?$ series.php?page=$2
+RewriteRule ^series/([^/]+)/(page-([0-9]+)/)?$ series.php?s=$1&page=$3
+RewriteRule ^series/([^/]+)/([^/]+)$ episode.php?s=$2
+# Allow access from all domains for webfonts.
+<IfModule mod_headers.c>
+<FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css|css)$">
+Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+</IfModule>
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php7_module>
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time 60
+   php_value max_input_vars 7000
+   php_value memory_limit 256M
+   php_value post_max_size 7024M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php72"
+   php_value upload_max_filesize 7024M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time 60
+   php_value max_input_vars 7000
+   php_value memory_limit 256M
+   php_value post_max_size 7024M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php72"
+   php_value upload_max_filesize 7024M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

@@ -1,0 +1,51 @@
+
+<div id="id01" style='background-color:#CCF; font-family: "Roboto", Arial, Verdana, sans-serif'></div>
+<script>
+
+var getJSON = function(url, callback) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    
+    xhr.onload = function() {
+    
+        var status = xhr.status;
+        
+        if (status == 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(status);
+        }
+    };
+    
+    xhr.send();
+};
+
+getJSON('https://omny.fm/api/orgs/4628fc36-1d90-4922-817d-aac0000aff55/programs/',  function(err, data) {
+    
+  
+  var out = "<table >";
+  var i;
+  var res;
+  for(i = 0; i < data.Programs.length; i++) {
+	  	
+		res = data.Programs[i].Description.toString();
+   		res=res.substring(0,120)+'...';
+		
+    out += '<tr>'
+	out +='<td>' + '<img src='+data.Programs[i].ArtworkUrl+' width="100px" height="100px"  >'+'<td>'
+	out +='<td>' + data.Programs[i].Name+'<td>'
+	out +='<td>' + res+'<td>'
+	out +='</tr>' 
+  }
+  out +='<table';
+  document.getElementById("id01").innerHTML = out;
+	
+	
+	
+	
+});
+
+</script>
+
